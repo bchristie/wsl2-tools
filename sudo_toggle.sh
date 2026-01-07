@@ -1,5 +1,26 @@
 #!/bin/bash
 # Sudo NOPASSWD Toggle Script
+#
+# Add sudo_toggle.sh - Toggle passwordless sudo for current user
+#
+# This script provides a simple way to enable/disable NOPASSWD sudo
+# privileges for the current user in WSL2. It checks for the existence
+# of a sudoers configuration file in /etc/sudoers.d/ and toggles the
+# setting accordingly:
+#
+# - If passwordless sudo is enabled, it disables it (requires password)
+# - If passwordless sudo is disabled, it enables it (no password required)
+#
+# The script uses a toggle mechanism for convenience and follows sudo
+# best practices by writing to /etc/sudoers.d/ with proper permissions.
+#
+# Passwordless sudo is particularly useful in WSL2 environments for
+# automation scripts, development workflows, and CI/CD pipelines where
+# repeated password prompts would interrupt the flow. It's helpful when
+# running Docker commands, mounting drives, or managing services during
+# development, while still allowing quick toggle back to secure mode
+# when not actively developing.
+#
 # Place this script in your home directory (~/) and run it with:
 # $ source ~/sudo_toggle.sh
 # Also don't forget to allow execution:
